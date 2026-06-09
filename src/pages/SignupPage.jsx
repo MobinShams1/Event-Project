@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import Modal from "../Modal.jsx";
-import SignupForm from "./SignupForm.jsx";
+import Modal from "../components/Modal.jsx";
+import SignupForm from "../components/Auth/SignupForm.jsx";
 import { useMutation } from "@tanstack/react-query";
-import { userSignup } from "../../api-http/http.js";
-import ErrorBlock from "../ErrorBlock.jsx";
+import { userSignup } from "../api-http/http.js";
+import ErrorBlock from "../components/ErrorBlock.jsx";
 import { useDispatch } from "react-redux";
-import { loginSuccess } from "../../redux/authSlice.js";
+import { loginSuccess } from "../redux/authSlice.js";
 function SignupPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();

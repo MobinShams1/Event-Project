@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import Modal from "../Modal.jsx";
-import LoginForm from "./LoginForm";
+import Modal from "../components/Modal.jsx";
+import LoginForm from "../components/Auth/LoginForm.jsx";
 import { useMutation } from "@tanstack/react-query";
-import { userLogin } from "../../api-http/http.js";
-import { loginStart, loginSuccess, loginFailure } from '../../redux/authSlice.js'
+import { userLogin } from "../api-http/http.js";
+import { loginStart, loginSuccess, loginFailure } from '../redux/authSlice.js'
 import { useDispatch} from "react-redux";
-import ErrorBlock from "../ErrorBlock.jsx";
+import ErrorBlock from "../components/ErrorBlock.jsx";
 
 function LoginPage() {
 

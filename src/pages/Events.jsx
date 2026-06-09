@@ -3,21 +3,25 @@ import EventsIntroSection from '../components/Events/EventsIntroSection.jsx';
 
 import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import NewEventsSection from '../components/Events/NewEventSection.jsx';
+import FindEventSection from '../components/Events/FindEventSection.jsx';
 export default function Events() {
   return (
     <>
-      <Outlet />
       <Header>
         <Link to="/events/new" className="button">
           New Event
         </Link>
-       
+
 
       </Header>
       <main>
         <EventsIntroSection />
-        
+        <NewEventsSection />
+        <FindEventSection />
       </main>
+      <Outlet />
+
     </>
   );
 }

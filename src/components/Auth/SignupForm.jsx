@@ -1,5 +1,12 @@
+import { useState } from "react";
+
 function SignupForm({children ,onSubmit}) {
 
+  const [showPass, setShowPass] = useState(false);
+  
+    function handletoggleShowPass() {
+      setShowPass((prev) => !prev)
+    }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -48,8 +55,25 @@ function SignupForm({children ,onSubmit}) {
         <input
           id="password"
           name="password"
-          type="password"
+          type={showPass ? 'text' : 'password'}
+          
         />
+        <button
+          type="button"
+          onClick={handletoggleShowPass}
+          style={{
+            position: 'absolute',
+            right: '8px',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '18px',
+            padding: '4px 8px',
+            marginRight: '2rem'
+          }}
+        >
+          {showPass ? '👁️' : '👁️‍🗨️'}
+        </button>
       </p>
       
       <p className="form-actions">{children}</p>

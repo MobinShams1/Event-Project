@@ -219,13 +219,12 @@ app.get('/events', async (req, res) => {
       image: event.image,
       date: event.date,
       location: event.location,
-      username: event.username || 'unknown',     // ✅ نمایش username سازنده
-      createdAt: event.createdAt || null,        // ✅ تاریخ ساخت
+      username: event.username || 'unknown',    
+      createdAt: event.createdAt || null,        
     })),
   });
 });
 
-// Get events images
 app.get('/events/images', async (req, res) => {
   const imagesFileContent = await fs.readFile('./data/images.json');
   const images = JSON.parse(imagesFileContent);
@@ -233,7 +232,6 @@ app.get('/events/images', async (req, res) => {
   res.json({ images });
 });
 
-// Get single event by ID (✅ نمایش جزئیات + username سازنده)
 app.get('/events/:id', async (req, res) => {
   const { id } = req.params;
 
@@ -258,11 +256,9 @@ app.get('/events/:id', async (req, res) => {
   }, 1000);
 });
 
-// Create new event - ✅ اضافه کردن username سازنده به صورت خودکار
 app.post('/events', async (req, res) => {
   const { event } = req.body;
   
-  // ✅ دریافت username از هدر درخواست (اگر ارسال شده باشد)
   const username = req.headers['x-username'];
   const userId = req.headers['x-userid'];
 
@@ -291,9 +287,9 @@ app.post('/events', async (req, res) => {
   const newEvent = {
     id: Math.round(Math.random() * 10000).toString(),
     ...event,
-    username: username || 'anonymous',     // ✅ ذخیره username سازنده
-    createdBy: userId || null,             // ✅ ذخیره userId سازنده
-    createdAt: new Date().toISOString(),   // ✅ تاریخ ایجاد
+    username: username || 'anonymous',    
+    createdBy: userId || null,             
+    createdAt: new Date().toISOString(),   
   };
 
   events.push(newEvent);
@@ -302,13 +298,10 @@ app.post('/events', async (req, res) => {
   res.json({ event: newEvent });
 });
 
-// Update event - ✅ بدون محدودیت (همه می‌توانند ویرایش کنند)
-// Update event - ✅ فقط سازنده می‌تواند ویرایش کند
 app.put('/events/:id', async (req, res) => {
   const { id } = req.params;
   const { event } = req.body;
   
-  // ✅ دریافت username از هدر (کاربر لاگین شده)
   const username = req.headers['x-username'];
 
   if (!username) {
@@ -346,14 +339,13 @@ app.put('/events/:id', async (req, res) => {
     });
   }
 
-  // ✅ حفظ username و createdBy اصلی (اجازه تغییر ندارد)
   events[eventIndex] = {
     id: events[eventIndex].id,
-    username: events[eventIndex].username,      // حفظ username اصلی
-    createdBy: events[eventIndex].createdBy,    // حفظ createdBy اصلی
-    createdAt: events[eventIndex].createdAt,    // حفظ تاریخ ایجاد اصلی
+    username: events[eventIndex].username,      
+    createdBy: events[eventIndex].createdBy,    
+    createdAt: events[eventIndex].createdAt,    
     ...event,
-    updatedAt: new Date().toISOString(),        // اضافه کردن تاریخ ویرایش
+    updatedAt: new Date().toISOString(),      
   };
 
   await fs.writeFile('./data/events.json', JSON.stringify(events, null, 2));

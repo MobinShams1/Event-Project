@@ -7,7 +7,7 @@ function Header({children}) {
       </div>
       <header id="main-header">
         <div>
-          <h1>React Events</h1>
+          <h1>Event Page</h1>
         </div>
         <nav>{children}</nav>
       </header>

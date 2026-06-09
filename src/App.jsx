@@ -9,11 +9,13 @@ import NewEvent from "./pages/NewEvent";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import EventDetails from "./pages/EventDetails";
-import {
-  EditEvent,
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import EditEvent, {
   loader as editEventLoader,
   action as editEventAction
 } from "./pages/EditEvent";
+import { setUserFromStorage } from "./redux/authSlice";
 function App() {
 
   const router = createBrowserRouter([
@@ -53,6 +55,19 @@ function App() {
       ],
     },
   ]);
+
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  if (user) {
+    console.log(user.firstName);
+  } else {
+    console.log("user not found");
+  }
+  useEffect(() => {
+
+    dispatch(setUserFromStorage());
+  }, [dispatch]);
+
 
   return (<>
     <QueryClientProvider client={queryClient}>

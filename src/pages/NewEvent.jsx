@@ -4,8 +4,11 @@ import Modal from '../components/Modal.jsx';
 import EventForm from '../components/Events/EventForm.jsx';
 import { createNewEvent, queryClient } from '../api-http/http.js';
 import ErrorBlock from '../components/ErrorBlock.jsx';
+import { useEffect } from 'react';
 export default function NewEvent() {
   const navigate = useNavigate();
+
+  
 
   const { mutate, isPending, isError, error } = useMutation({
 

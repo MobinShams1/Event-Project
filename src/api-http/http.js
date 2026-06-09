@@ -28,19 +28,25 @@ export async function fetchEvents({ signal, searchTerm, max }) {
   return events;
 }
 
+// http.js
 export async function createNewEvent(eventData) {
   const user = localStorage.getItem("user");
-  console.log(user);
+  
+  if (!user) {
+    const error = new Error("You must be logged in to create an event");
+    error.code = 401;
+    error.info = { message: "Please login first" };
+    throw error;
+  }
+  
   let headers = {
     "Content-Type": "application/json",
   };
 
-  if (user) {
-    const userData = JSON.parse(user);
-    headers["X-Username"] = userData.username;
-    headers["X-UserId"] = userData.id;
-    console.log("sending headers: ", headers);
-  }
+  const userData = JSON.parse(user);
+  headers["X-Username"] = userData.username;
+  headers["X-UserId"] = userData.id;
+  console.log("sending headers: ", headers);
 
   const response = await fetch(`http://localhost:3000/events`, {
     method: "POST",
@@ -58,7 +64,6 @@ export async function createNewEvent(eventData) {
   }
 
   const { event } = await response.json();
-
   return event;
 }
 

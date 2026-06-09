@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import NewEventsSection from '../components/Events/NewEventSection.jsx';
 import FindEventSection from '../components/Events/FindEventSection.jsx';
+import LoginAndSignUp from '../components/Auth/LoginAndSignup.jsx';
 export default function Events() {
   return (
     <>
@@ -12,7 +13,7 @@ export default function Events() {
         <Link to="/events/new" className="button">
           New Event
         </Link>
-
+        <LoginAndSignUp/>
 
       </Header>
       <main>

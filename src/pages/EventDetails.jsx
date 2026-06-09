@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@tanstack/react-query';
-import Header from '../Header.jsx';
-import { fetchEvent, deleteEvent, queryClient } from '../../util/http.js';
-import ErrorBlock from '../UI/ErrorBlock.jsx';
-import Modal from '../UI/Modal.jsx';
+import Header from '../components/Header.jsx';
+import { fetchEvent, deleteEvent, queryClient } from '../api-http/http.js';
+import ErrorBlock from '../components/ErrorBlock.jsx';
+import Modal from '../components/Modal.jsx';
 import { useSelector } from 'react-redux';
 
 export default function EventDetails() {
@@ -76,7 +76,7 @@ export default function EventDetails() {
         <header>
           <h1>{data.title}</h1>
           <nav>
-            {/* ✅ فقط اگر کاربر سازنده است و دیتا لود شده */}
+           
             {isCreator && (
               <>
                 <button onClick={handleStartDelete}>Delete</button>
@@ -107,7 +107,6 @@ export default function EventDetails() {
 
   return (
     <>
-      {/* ✅ مدال حذف - جدا از محتوای اصلی */}
       {showDeleteModal && (
         <Modal onClose={handleStopDelete}>
           <p>Are you sure?</p>

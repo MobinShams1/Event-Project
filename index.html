@@ -1,23 +1,26 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script>
-      (function () {
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect !== location.href) {
-          history.replaceState(null, null, redirect);
-        }
-      })();
-    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/Event-Project/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>event-project</title>
     <script>
-      sessionStorage.redirect = location.href;
+      (function () {
+        var redirect = sessionStorage.getItem("redirect");
+        if (redirect) {
+          sessionStorage.removeItem("redirect");
+          if (
+            redirect !== window.location.pathname &&
+            redirect !== "/" &&
+            redirect !== "/Event-Project/"
+          ) {
+            history.replaceState(null, null, redirect);
+          }
+        }
+      })();
     </script>
-    <script type="module" crossorigin src="/Event-Project/assets/index-D3ZiEnZd.js"></script>
+    <script type="module" crossorigin src="/Event-Project/assets/index-BWe8Z8fb.js"></script>
     <link rel="modulepreload" crossorigin href="/Event-Project/assets/ErrorBlock--JFeHKqR.js">
     <link rel="modulepreload" crossorigin href="/Event-Project/assets/useQuery-1M2iPxOf.js">
     <link rel="stylesheet" crossorigin href="/Event-Project/assets/index-BqwFvfq1.css">
@@ -25,6 +28,5 @@
   <body>
     <div id="modal"></div>
     <div id="root"></div>
-
   </body>
 </html>

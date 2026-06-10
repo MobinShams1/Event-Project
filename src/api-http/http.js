@@ -1,11 +1,14 @@
 import { QueryClient } from "@tanstack/react-query";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
+
 export const queryClient = new QueryClient();
 
 export async function fetchEvents({ signal, searchTerm, max }) {
   console.log(searchTerm);
 
-  let url = "http://localhost:3000/events";
+  let url = `${API_URL}/events`;
 
   if (searchTerm && max) {
     url += "?search=" + searchTerm + "&max=" + max;
@@ -48,7 +51,7 @@ export async function createNewEvent(eventData) {
   headers["X-UserId"] = userData.id;
   console.log("sending headers: ", headers);
 
-  const response = await fetch(`http://localhost:3000/events`, {
+  const response = await fetch(`${API_URL}`, {
     method: "POST",
     body: JSON.stringify({ event: eventData }),
     headers: headers,
@@ -68,7 +71,7 @@ export async function createNewEvent(eventData) {
 }
 
 export async function fetchSelectableImages({ signal }) {
-  const response = await fetch(`http://localhost:3000/events/images`, {
+  const response = await fetch(`${API_URL}/images`, {
     signal,
   });
 
@@ -84,7 +87,7 @@ export async function fetchSelectableImages({ signal }) {
 }
 
 export async function fetchEvent({ id, signal }) {
-  const response = await fetch(`http://localhost:3000/events/${id}`, {
+  const response = await fetch(`${API_URL}/events/${id}`, {
     signal,
   });
 
@@ -110,7 +113,7 @@ export async function deleteEvent({ id }) {
     headers["X-UserId"] = userData.id;
   }
 
-  const response = await fetch(`http://localhost:3000/events/${id}`, {
+  const response = await fetch(`${API_URL}/events/${id}`, {
     method: "DELETE",
     headers: headers
   });
@@ -136,7 +139,7 @@ export async function updateEvent({ id, event }) {
     headers["X-UserId"] = userData.id;
   }
 
-  const response = await fetch(`http://localhost:3000/events/${id}`, {
+  const response = await fetch(`${API_URL}}/events/${id}`, {
     method: "PUT",
     body: JSON.stringify({ event }),
     headers: headers,
@@ -153,7 +156,7 @@ export async function updateEvent({ id, event }) {
 }
 
 export async function userSignup({ user }) {
-  const response = await fetch(`http://localhost:3000/api/auth/signup`, {
+  const response = await fetch(`${API_URL}/api/auth/signup`, {
     method: "POST",
     body: JSON.stringify(user),
     headers: { "Content-Type": "application/json" },
@@ -170,7 +173,7 @@ export async function userSignup({ user }) {
 }
 
 export async function userLogin({ user }) {
-  const response = await fetch(`http://localhost:3000/api/auth/login`, {
+  const response = await fetch(`${API_URL}/api/auth/login`, {
     method: "POST",
     body: JSON.stringify(user),
     headers: {

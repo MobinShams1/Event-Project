@@ -2,8 +2,14 @@ import fs from 'node:fs/promises';
 import bodyParser from 'body-parser';
 import express from 'express';
 import bcrypt from 'bcrypt';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
+
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -20,6 +26,14 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+try {
+  await fs.mkdir(path.join(__dirname, 'data'), { recursive: true });
+} catch (err) {
+  console.log('Data folder already exists or error:', err);
+}
+
+
 
 // ============= ROUTES FOR AUTHENTICATION =============
 
@@ -391,6 +405,7 @@ app.delete('/events/:id', async (req, res) => {
 });
 
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

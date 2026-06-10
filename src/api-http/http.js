@@ -71,7 +71,7 @@ export async function createNewEvent(eventData) {
 }
 
 export async function fetchSelectableImages({ signal }) {
-  const response = await fetch(`${API_URL}/images`, {
+  const response = await fetch(`${API_URL}/events/images`, {
     signal,
   });
 

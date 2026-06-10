@@ -504,7 +504,6 @@ ul {
   }
 }
 
-
 .lds-ring {
   display: inline-block;
   position: relative;
@@ -565,22 +564,130 @@ ul {
   }
 }
 
-
 @media (max-width: 768px) {
+  #main-header {
+    padding: 1rem 15%;
+  }
+
+  .button {
+    padding: 0.35rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .login-signup {
+    gap: 0.5rem;
+  }
+
   #overview-section {
     background-position: center center !important;
     background-size: cover !important;
-    min-height: 60vh;
-    padding: 2rem 1rem;
+    min-height: 50vh;
+    padding: 2rem 1rem !important;
     text-align: center;
   }
 
   #overview-section h2 {
-    font-size: 1.8rem;
-    word-break: break-word; /* متن‌های طولانی رو بشکن */
+    font-size: 1.6rem;
+    word-break: break-word;
   }
 
-  #overview-section br {
-    display: none; /* <br> رو مخفی کن تا متن توی یه خط نیفته */
+  #overview-section h2 br {
+    display: none; 
   }
+
+  #overview-section p {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+
+  #search-form {
+    display: flex;
+    flex-wrap: nowrap; 
+    margin-top: 1rem;
+  }
+
+  #search-form input {
+    font: inherit;
+    padding: 0.5rem 1rem;
+    border-radius: 4px 0 0 4px;
+    border: none;
+    background: #fff;
+    flex: 1;
+    min-width: 0; 
+  }
+
+  #search-form button {
+    font: inherit;
+    padding: 0.5rem 1rem;
+    border-radius: 0 4px 4px 0;
+    border: none;
+    background: #b6cad5;
+    color: #1d161a;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap; /
+  }
+
+  #event-form {
+    padding: 1rem;
+  }
+
+  #event-form label {
+    font-size: 0.75rem;
+  }
+
+  #event-form input,
+  #event-form textarea {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .controls-row {
+    flex-direction: column;
+    gap: 0rem;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse; 
+    gap: 0.75rem;
+    align-items: stretch; 
+    margin-top: 1.5rem;
+  }
+
+  .form-actions button,
+  .form-actions .button-text {
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem;
+  }
+
+  .control {
+    margin-bottom: 1rem;
+  }
+
+  #image-picker ul {
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;  /* بدون wrap - اسکرول افقی */
+  overflow-x: auto;
+  gap: 0.75rem;
+  scrollbar-width: thin;
+}
+
+#image-picker li {
+  flex: 0 0 auto;  /* اندازه ثابت */
+  width: 120px;
+  height: 90px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#image-picker img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 }

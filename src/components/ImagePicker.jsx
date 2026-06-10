@@ -5,7 +5,7 @@ export default function ImagePicker({ images, selectedImage, onSelect }) {
       <ul>
         {images.map((image) => (
           <li
-            key={image.if}
+            key={image.path}
             onClick={() => onSelect(image.path)}
             className={selectedImage === image.path ? 'selected' : undefined}
           >

@@ -51,7 +51,7 @@ export async function createNewEvent(eventData) {
   headers["X-UserId"] = userData.id;
   console.log("sending headers: ", headers);
 
-  const response = await fetch(`${API_URL}`, {
+  const response = await fetch(`${API_URL}/events`, {
     method: "POST",
     body: JSON.stringify({ event: eventData }),
     headers: headers,
@@ -139,7 +139,7 @@ export async function updateEvent({ id, event }) {
     headers["X-UserId"] = userData.id;
   }
 
-  const response = await fetch(`${API_URL}}/events/${id}`, {
+  const response = await fetch(`${API_URL}/events/${id}`, {
     method: "PUT",
     body: JSON.stringify({ event }),
     headers: headers,

@@ -13,7 +13,13 @@ import {
 } from "./pages/EditEvent";
 import { setUserFromStorage } from "./redux/authSlice";
 import LoadingIndicator from "./components/LoadingIndicator";
+
+
+
+
 function App() {
+
+  
 
 
   const Events = lazy(() => import("./pages/Events"));
@@ -35,7 +41,7 @@ function App() {
       }}>
         <div>
           <div className="loader"></div>
-          <p>Loading...</p>
+          <p>Loading... </p>
         </div>
       </div>
     );

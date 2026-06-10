@@ -113,7 +113,7 @@ ul {
 
 #overview-section h2 {
   font-size: 2.5rem;
-  margin: 2rem auto;
+  margin: 3rem auto;
   color: #1d161a;
 }
 
@@ -566,44 +566,77 @@ ul {
 
 @media (max-width: 768px) {
   #main-header {
-    padding: 1rem 15%;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0.75rem 1rem !important;
+    flex-wrap: wrap !important;
   }
 
-  .button {
-    padding: 0.35rem 1rem;
-    font-size: 0.85rem;
+  #main-header > div:first-child {
+    flex: 0 0 auto !important;
+  }
+
+  #main-header div h1 {
+    font-size: 1.1rem !important;
+    margin: 0 !important;
+  }
+
+  #main-header nav {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-end !important;
+  }
+
+  #main-header nav .button,
+  #main-header nav .login-signup .button {
+    padding: 0.3rem 0.7rem !important;
+    font-size: 0.75rem !important;
+    min-width: auto !important;
   }
 
   .login-signup {
-    gap: 0.5rem;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.4rem !important;
   }
 
   #overview-section {
+    margin-top: -60px;
+    padding-top: 100px !important;
     background-position: center center !important;
     background-size: cover !important;
     min-height: 50vh;
-    padding: 2rem 1rem !important;
+
     text-align: center;
   }
 
   #overview-section h2 {
+    margin-top: 10rem !important;
+    padding-top: 0 !important;
     font-size: 1.6rem;
     word-break: break-word;
   }
 
   #overview-section h2 br {
-    display: none; 
+    display: none;
   }
 
   #overview-section p {
+    margin-top: 10rem !important;
+    padding-top: 0 !important;
     font-size: 0.9rem;
     padding: 0 1rem;
   }
 
   #search-form {
     display: flex;
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap;
     margin-top: 1rem;
+    width: 100%;
   }
 
   #search-form input {
@@ -613,7 +646,8 @@ ul {
     border: none;
     background: #fff;
     flex: 1;
-    min-width: 0; 
+    min-width: 0;
+    font-size: 0.85rem;
   }
 
   #search-form button {
@@ -625,11 +659,16 @@ ul {
     color: #1d161a;
     font-weight: bold;
     cursor: pointer;
-    white-space: nowrap; /
+    white-space: nowrap;
+    font-size: 0.85rem;
   }
 
+  /* ========== فرم ایجاد و ویرایش رویداد ========== */
   #event-form {
-    padding: 1rem;
+    padding: 0.75rem !important;
+    width: 95% !important;
+    margin: 1rem auto !important;
+    box-sizing: border-box !important;
   }
 
   #event-form label {
@@ -640,54 +679,156 @@ ul {
   #event-form textarea {
     font-size: 0.9rem;
     padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .controls-row {
-    flex-direction: column;
-    gap: 0rem;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
   }
 
   .form-actions {
-    flex-direction: column-reverse; 
-    gap: 0.75rem;
-    align-items: stretch; 
-    margin-top: 1.5rem;
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    gap: 0.75rem !important;
+    align-items: stretch !important;
+    margin-top: 1.5rem !important;
   }
 
   .form-actions button,
   .form-actions .button-text {
-    width: 100%;
-    text-align: center;
-    padding: 0.6rem;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 0.6rem !important;
+    box-sizing: border-box !important;
   }
 
   .control {
     margin-bottom: 1rem;
+    width: 100%;
   }
 
+  /* ========== انتخاب کننده عکس (اسکرول افقی) ========== */
   #image-picker ul {
-  list-style: none;
-  padding: 0.5rem;
-  margin: 0;
-  display: flex;
-  flex-wrap: nowrap;  /* بدون wrap - اسکرول افقی */
-  overflow-x: auto;
-  gap: 0.75rem;
-  scrollbar-width: thin;
+    list-style: none;
+    padding: 0.5rem;
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.75rem;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #image-picker li {
+    flex: 0 0 auto;
+    width: 100px; /* کمی کوچک‌تر برای موبایل */
+    height: 75px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  #image-picker li.selected {
+    border-color: #e30d7c;
+  }
+
+  #image-picker img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ========== لیست رویدادها ========== */
+  .events-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .event-item {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  .event-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .event-item h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+
+  /* ========== صفحه جزئیات رویداد ========== */
+  .event-details {
+    padding: 0.75rem;
+  }
+
+  .event-details img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ========== مودال ========== */
+  .modal {
+    width: 95% !important;
+    margin: 0 auto !important;
+    padding: 0.75rem !important;
+  }
 }
 
-#image-picker li {
-  flex: 0 0 auto;  /* اندازه ثابت */
-  width: 120px;
-  height: 90px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  overflow: hidden;
-}
+/* ========================================= */
+/* موبایل خیلی کوچک (عرض کمتر از 480px) */
+/* ========================================= */
+@media (max-width: 480px) {
+  #main-header div h1 {
+    font-size: 1.1rem !important;
+  }
 
-#image-picker img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .button {
+    padding: 0.3rem 0.7rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  #overview-section h2 {
+    margin: 0 !important;
+    margin-top: 10rem;
+    font-size: 1.3rem;
+  }
+
+  #overview-section p {
+    font-size: 0.8rem;
+  }
+
+  #search-form input,
+  #search-form button {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  #event-form input,
+  #event-form textarea {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+  }
+
+  .form-actions button,
+  .form-actions .button-text {
+    padding: 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  #image-picker li {
+    width: 80px;
+    height: 60px;
+  }
 }

@@ -23,6 +23,25 @@ function App() {
   const EventDetails = lazy(() => import("./pages/EventDetails"));
   const EditEvent = lazy(() => import("./pages/EditEvent"));
 
+  function LoadingFallback() {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        fontSize: '1.2rem',
+        color: '#666'
+      }}>
+        <div>
+          <div className="loader"></div>
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+
 
   const router = createBrowserRouter([
     {
@@ -33,21 +52,21 @@ function App() {
       path: '/login',
 
       element: (
-        <Suspense fallback={<LoadingIndicator />}>
+        <Suspense fallback={<LoadingFallback />}>
           <LoginPage /></Suspense>
       )
     },
     {
       path: '/signup',
       element: (
-        <Suspense fallback={<LoadingIndicator />}>
+        <Suspense fallback={<LoadingFallback />}>
           <SignupPage /></Suspense>
       )
     },
     {
       path: '/events',
       element: (
-        <Suspense fallback={<LoadingIndicator/>}>
+        <Suspense fallback={<LoadingFallback />}>
           <Events /></Suspense>
       ),
 
@@ -55,7 +74,7 @@ function App() {
         {
           path: '/events/new',
           element: (
-            <Suspense fallback={<LoadingIndicator />}>
+            <Suspense fallback={<LoadingFallback />}>
               <NewEvent /></Suspense>
           ),
         },
@@ -63,7 +82,7 @@ function App() {
     },
     {
       path: '/events/:id',
-      element: (<Suspense fallback={<LoadingIndicator />}><EventDetails /></Suspense>),
+      element: (<Suspense fallback={<LoadingFallback />}><EventDetails /></Suspense>),
       children: [
         {
           path: '/events/:id/edit',
@@ -76,7 +95,11 @@ function App() {
         },
       ],
     },
-  ]);
+  ],
+    {
+      basename: "/Event-Project"
+    }
+  );
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);

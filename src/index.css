@@ -567,40 +567,36 @@ ul {
 @media (max-width: 768px) {
   #main-header {
     display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
+    flex-direction: column !important;
     align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
     padding: 0.75rem 1rem !important;
-    flex-wrap: wrap !important;
-  }
-
-  #main-header > div:first-child {
-    flex: 0 0 auto !important;
+    gap: 0.5rem !important;
   }
 
   #main-header div h1 {
-    font-size: 1.1rem !important;
+    font-size: 1.2rem !important;
     margin: 0 !important;
   }
 
   #main-header nav {
     display: flex !important;
     flex-direction: row !important;
-    gap: 0.5rem !important;
+    justify-content: center !important;
     flex-wrap: wrap !important;
-    justify-content: flex-end !important;
+    gap: 0.5rem !important;
   }
 
-  #main-header nav .button,
-  #main-header nav .login-signup .button {
-    padding: 0.3rem 0.7rem !important;
-    font-size: 0.75rem !important;
-    min-width: auto !important;
+  .button {
+    padding: 0.35rem 0.8rem !important;
+    font-size: 0.8rem !important;
   }
 
   .login-signup {
     display: flex !important;
     flex-direction: row !important;
+    justify-content: center !important;
     gap: 0.4rem !important;
   }
 
@@ -663,12 +659,17 @@ ul {
     font-size: 0.85rem;
   }
 
-  /* ========== فرم ایجاد و ویرایش رویداد ========== */
   #event-form {
-    padding: 0.75rem !important;
-    width: 95% !important;
-    margin: 1rem auto !important;
-    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 90% !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    padding: 1.5rem !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
   }
 
   #event-form label {
@@ -710,7 +711,6 @@ ul {
     width: 100%;
   }
 
-  /* ========== انتخاب کننده عکس (اسکرول افقی) ========== */
   #image-picker ul {
     list-style: none;
     padding: 0.5rem;
@@ -743,24 +743,33 @@ ul {
     object-fit: cover;
   }
 
-  /* ========== لیست رویدادها ========== */
   .events-list {
     display: flex !important;
     flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
     gap: 1rem !important;
     padding: 0.5rem !important;
+    width: 100% !important;
   }
 
   .event-item {
     display: flex !important;
     flex-direction: column !important;
+    align-items: center !important;
     text-align: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    background: white !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
 
   .event-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
   }
 
   .event-item h2 {
@@ -768,7 +777,6 @@ ul {
     margin: 0.5rem 0;
   }
 
-  /* ========== صفحه جزئیات رویداد ========== */
   .event-details {
     padding: 0.75rem;
   }
@@ -778,17 +786,14 @@ ul {
     height: auto;
   }
 
-  /* ========== مودال ========== */
   .modal {
     width: 95% !important;
-    margin: 0 auto !important;
-    padding: 0.75rem !important;
+    max-width: 450px !important;
+    margin: auto !important;
+    padding: 1rem !important;
   }
 }
 
-/* ========================================= */
-/* موبایل خیلی کوچک (عرض کمتر از 480px) */
-/* ========================================= */
 @media (max-width: 480px) {
   #main-header div h1 {
     font-size: 1.1rem !important;
